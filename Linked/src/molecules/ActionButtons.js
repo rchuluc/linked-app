@@ -20,7 +20,7 @@ export default class ActionButtons extends Component {
 
   render() {
     return (
-      <View style={button.inlineButtons}>
+      <View style={[this.props.style, button.inlineButtons]}>
         <Button
           action={this.props.secondaryAction}
           title={this.props.secondaryTitle}

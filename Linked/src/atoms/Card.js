@@ -33,7 +33,9 @@ export default class Card extends Component {
 
   render() {
     return (
-      <View style={[card.body, this.state.variant]}>{this.props.children}</View>
+      <View style={[this.props.style, card.body, this.state.variant]}>
+        {this.props.children}
+      </View>
     )
   }
 }

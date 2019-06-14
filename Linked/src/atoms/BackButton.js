@@ -16,7 +16,13 @@ export default class Button extends Component {
   render() {
     return (
       <TouchableOpacity
-        style={[this.props.style, button.normal, display.row, display.center]}
+        style={[
+          this.props.style,
+          button.navButton,
+          display.row,
+          display.center,
+          display.selfStart
+        ]}
         onPress={this.props.action}
       >
         <Icon

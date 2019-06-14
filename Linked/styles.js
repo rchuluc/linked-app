@@ -39,6 +39,11 @@ const button = StyleSheet.create({
     fontSize: PixelRatio.getPixelSizeForLayoutSize(12)
   },
 
+  iconMedium: {
+    color: '#222222',
+    fontSize: PixelRatio.getPixelSizeForLayoutSize(10)
+  },
+
   iconSmall: {
     color: '#222222',
     fontSize: PixelRatio.getPixelSizeForLayoutSize(7)
@@ -50,6 +55,14 @@ const button = StyleSheet.create({
     paddingBottom: PixelRatio.get() * 5,
     paddingLeft: PixelRatio.get() * 18,
     paddingRight: PixelRatio.get() * 18,
+    alignSelf: 'center'
+  },
+
+  navButton: {
+    paddingTop: PixelRatio.get() * 5,
+    paddingBottom: PixelRatio.get() * 5,
+    paddingLeft: PixelRatio.get() * 7.25,
+    paddingRight: PixelRatio.get() * 10,
     alignSelf: 'center'
   },
 
@@ -67,7 +80,7 @@ const button = StyleSheet.create({
   inlineButtons: {
     position: 'relative',
     bottom: PixelRatio.get() * 10,
-    width: '100%',
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around'
   }
@@ -231,6 +244,12 @@ const display = StyleSheet.create({
     aspectRatio: 1 / 1
   },
 
+  logoSmall: {
+    margin: 0,
+    height: PixelRatio.get() * 30,
+    width: PixelRatio.get() * 30
+  },
+
   imageMedium: {
     margin: 0,
     height: PixelRatio.get() * 60
@@ -267,14 +286,27 @@ const display = StyleSheet.create({
     alignItems: 'center'
   },
 
+  start: {
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
+
   spaceBetween: {
     justifyContent: 'space-between',
     alignItems: 'center'
   },
 
-  start: {
-    justifyContent: 'flex-start',
-    alignItems: 'center'
+  alignRight: {
+    position: 'absolute',
+    right: PixelRatio.get() * 1
+  },
+
+  selfStart: {
+    alignSelf: 'flex-start'
+  },
+
+  selfEnd: {
+    alignSelf: 'flex-end'
   },
 
   marginLargeTop: {

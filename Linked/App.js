@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from 'react'
-import BackButton from './src/atoms/BackButton'
+import NewEmployee from './src/pages/NewEmployee'
 
 export default class App extends Component {
   constructor() {
@@ -12,6 +12,6 @@ export default class App extends Component {
   }
 
   render() {
-    return <BackButton />
+    return <NewEmployee />
   }
 }
