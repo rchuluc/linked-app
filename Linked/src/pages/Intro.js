@@ -26,8 +26,9 @@ export default class Intro extends Component {
   render() {
     return (
       <View style={[display.container, display.col, display.center]}>
-        <Carousel step={this.state.step} />
+        <Carousel style={[display.marginLargeTop]} step={this.state.step} />
         <ActionButton
+          style={{ position: 'absolute' }}
           primaryAction={() => this.next()}
           primaryTitle="next"
           variant="primary"

@@ -3,8 +3,10 @@ import { View } from 'react-native'
 import { display } from '../../styles'
 import Header from '../molecules/Header'
 import EmployeeForm from '../organisms/EmployeeForm'
+import FloatingButton from '../atoms/FloatingButton'
+import ActionModal from '../organisms/ActionModal'
 
-export default class NewEmployee extends Component {
+export default class EmployeeDetails extends Component {
   constructor() {
     super()
   }
@@ -12,12 +14,9 @@ export default class NewEmployee extends Component {
   render() {
     return (
       <View style={[display.container, display.col, display.start]}>
-        <Header
-          title="New Employee"
-          subtitle="Enter the personal data"
-          favoriteControl={false}
-        />
-        <EmployeeForm variant="atlternative" editable={true} />
+        <Header title="Name" favoriteControl={true} />
+        <EmployeeForm editable={false} variant="secondary" textValue="test" />
+        <ActionModal />
       </View>
     )
   }

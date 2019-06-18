@@ -14,7 +14,7 @@ export default class Stepper extends Component {
 
   render() {
     return (
-      <View style={stepper.container}>
+      <View style={[this.props.style, stepper.container]}>
         <View
           style={
             this.props.step === 0

@@ -62,31 +62,39 @@ export default class EmployeeForm extends Component {
   render() {
     return (
       <ScrollView style={{ width: '100%' }}>
-        <Card variant="alternative">
+        <Card variant={this.props.variant}>
           <View
             style={[
               { flex: 1 },
               display.col,
               display.center,
               display.marginSmallTop
-            ]}
-          >
+            ]}>
             {this.state.data.map(item => (
               <Input
                 key={item.label}
                 style={display.marginMediumBottom}
                 label={item.label}
                 placeholder={item.placeholder}
-                variant="alternative"
+                variant={
+                  this.props.editable ? this.props.variant : 'transparent'
+                }
+                editable={this.props.editable}
+                textValue={this.props.textValue}
               />
             ))}
           </View>
-          <ActionButton
-            style={[display.marginLargeTop, { flex: 1 }]}
-            primaryTitle="create"
-            variant="alternative"
-            secondaryTitle="cancel"
-          />
+          {this.props.editable ? (
+            <ActionButton
+              style={[
+                display.marginLargeTop,
+                { flex: 1, position: 'relative' }
+              ]}
+              primaryTitle="create"
+              variant={this.props.variant}
+              secondaryTitle="cancel"
+            />
+          ) : null}
         </Card>
       </ScrollView>
     )

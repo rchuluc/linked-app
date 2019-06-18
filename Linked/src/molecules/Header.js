@@ -8,7 +8,8 @@ import { text, display } from '../../styles'
 Header
 @param {string} title of the header
 @param {string} subtitle of the header
-@param {boolean} FavoriteControl enable the favorite function
+@param {boolean} favoriteControl enable the favorite function
+@param {boolean} backControl enable the visibility of backButton
 @param {function} action function passed to BackButton
  */
 
@@ -25,8 +26,7 @@ export default class Header extends Component {
           display.fullWidth,
           display.col,
           display.center
-        ]}
-      >
+        ]}>
         <BackButton />
         <View style={[display.fullWidth, display.row, display.center]}>
           <Text style={[text.h2, text.bold, display.marginSmallBottom]}>

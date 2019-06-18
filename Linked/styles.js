@@ -58,6 +58,10 @@ const button = StyleSheet.create({
     alignSelf: 'center'
   },
 
+  block: {
+    width: '65%'
+  },
+
   navButton: {
     paddingTop: PixelRatio.get() * 5,
     paddingBottom: PixelRatio.get() * 5,
@@ -78,9 +82,8 @@ const button = StyleSheet.create({
   },
 
   inlineButtons: {
-    position: 'relative',
-    bottom: PixelRatio.get() * 10,
-    flex: 1,
+    bottom: PixelRatio.get() * 15,
+    width: '95%',
     flexDirection: 'row',
     justifyContent: 'space-around'
   }
@@ -106,6 +109,10 @@ const input = StyleSheet.create({
 
   default: {
     borderBottomColor: '#222222'
+  },
+
+  transparent: {
+    borderBottomColor: '#FAFAFA'
   },
 
   placeholder: {
@@ -216,24 +223,6 @@ const stepper = StyleSheet.create({
   }
 })
 
-const carousel = StyleSheet.create({
-  layout: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center'
-  },
-  image: {
-    marginTop: PixelRatio.get() * 30,
-    height: '50%',
-    aspectRatio: 1 / 1
-  },
-  label: {
-    marginTop: PixelRatio.get() * -10,
-    marginBottom: PixelRatio.get() * 20,
-    textAlign: 'center'
-  }
-})
-
 const display = StyleSheet.create({
   logo: {
     position: 'absolute',
@@ -250,6 +239,11 @@ const display = StyleSheet.create({
     width: PixelRatio.get() * 30
   },
 
+  imageLarge: {
+    margin: 0,
+    height: PixelRatio.get() * 110
+  },
+
   imageMedium: {
     margin: 0,
     height: PixelRatio.get() * 60
@@ -263,6 +257,10 @@ const display = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF'
+  },
+
+  overlay: {
+    backgroundColor: 'rgba(0,0,0,0.6)'
   },
 
   row: {
@@ -358,4 +356,4 @@ const display = StyleSheet.create({
   }
 })
 
-export { button, input, text, card, stepper, carousel, display }
+export { button, input, text, card, stepper, display }

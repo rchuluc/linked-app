@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Image, Text } from 'react-native'
 import Stepper from '../atoms/Stepper'
-import { text, carousel } from '../../styles'
+import { text, display } from '../../styles'
 import wait from '../assets/wait.png'
 import people from '../assets/people.png'
 import favorite from '../assets/favorite.png'
@@ -26,16 +26,25 @@ export default class Carousel extends Component {
   }
   render() {
     return (
-      <View style={carousel.layout}>
+      <View
+        style={[
+          this.props.style,
+          display.container,
+          display.col,
+          display.start
+        ]}>
         <Image
-          style={carousel.image}
+          style={[display.imageLarge, display.marginLargeTop]}
           source={this.state.images[this.props.step]}
           resizeMode="contain"
         />
-        <Text style={[text.p, carousel.label]}>
+        <Text style={[text.p, display.marginSmallTop, { textAlign: 'center' }]}>
           {this.state.label[this.props.step]}
         </Text>
-        <Stepper step={this.props.step} />
+        <Stepper
+          style={[display.marginMediumTop, display.marginMediumBottom]}
+          step={this.props.step}
+        />
       </View>
     )
   }
