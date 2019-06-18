@@ -24,15 +24,20 @@ export default class Intro extends Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation
+
     return (
       <View style={[display.container, display.col, display.center]}>
         <Carousel style={[display.marginLargeTop]} step={this.state.step} />
         <ActionButton
           style={{ position: 'absolute' }}
-          primaryAction={() => this.next()}
+          primaryAction={
+            this.state.step === 2 ? () => navigate('Login') : () => this.next()
+          }
           primaryTitle="next"
           variant="primary"
           secondaryTitle="skip"
+          secondaryAction={() => navigate('Login')}
         />
       </View>
     )

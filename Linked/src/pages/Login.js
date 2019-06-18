@@ -12,6 +12,8 @@ export default class Login extends Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation
+
     return (
       <View style={[display.container, display.col, display.start]}>
         <Image
@@ -39,6 +41,7 @@ export default class Login extends Component {
           variant="primary"
         />
         <Button
+          action={() => navigate('Home')}
           style={display.marginSmallBottom}
           title="login"
           variant="primary"

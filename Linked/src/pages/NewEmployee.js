@@ -10,14 +10,21 @@ export default class NewEmployee extends Component {
   }
 
   render() {
+    const { goBack } = this.props.navigation
+
     return (
       <View style={[display.container, display.col, display.start]}>
         <Header
           title="New Employee"
           subtitle="Enter the personal data"
           favoriteControl={false}
+          action={() => goBack()}
         />
-        <EmployeeForm variant="atlternative" editable={true} />
+        <EmployeeForm
+          variant="atlternative"
+          editable={true}
+          variant="alternative"
+        />
       </View>
     )
   }

@@ -4,7 +4,8 @@ import { Text, TouchableOpacity, View } from 'react-native'
 import { text, display } from '../../styles'
 
 /**
- * ActionButton
+ActionButton
+@param {function} action action on press passed as () => this.function()
 @param {string} variant change color of card left border
 @param {string} label label of card
 */
@@ -16,7 +17,10 @@ export default class ActionCard extends Component {
 
   render() {
     return (
-      <TouchableOpacity style={[display.fullWidth, display.marginMediumBottom]}>
+      <TouchableOpacity
+        onPress={this.props.action}
+        style={[display.fullWidth, display.marginMediumBottom]}
+      >
         <Card variant={this.props.variant}>
           <View style={[display.fullWidth, display.row, display.center]}>
             <Text

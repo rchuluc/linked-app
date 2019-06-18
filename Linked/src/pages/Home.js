@@ -15,6 +15,8 @@ export default class Home extends Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation
+
     return (
       <View style={[display.container, display.col, display.start]}>
         <Image style={display.logo} source={Logo} resizeMode="contain" />
@@ -37,8 +39,16 @@ export default class Home extends Component {
             display.marginLargeTop
           ]}
         >
-          <ActionCard label="Add a new employee" variant="primary" />
-          <ActionCard label="View my employees" variant="secondary" />
+          <ActionCard
+            label="Add a new employee"
+            variant="primary"
+            action={() => navigate('NewEmployee')}
+          />
+          <ActionCard
+            label="View my employees"
+            variant="secondary"
+            action={() => navigate('Search')}
+          />
         </View>
       </View>
     )

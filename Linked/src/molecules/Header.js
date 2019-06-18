@@ -26,8 +26,9 @@ export default class Header extends Component {
           display.fullWidth,
           display.col,
           display.center
-        ]}>
-        <BackButton />
+        ]}
+      >
+        <BackButton action={this.props.action} />
         <View style={[display.fullWidth, display.row, display.center]}>
           <Text style={[text.h2, text.bold, display.marginSmallBottom]}>
             {this.props.title}

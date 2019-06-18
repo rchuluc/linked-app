@@ -20,12 +20,15 @@ export default class SearchPage extends Component {
   }
 
   render() {
+    const { goBack, navigate } = this.props.navigation
+
     return (
       <View style={[display.container, display.col, display.start]}>
         <Header
           title="My employees"
           subtitle="Here is!"
           favoriteControl={false}
+          action={() => goBack()}
         />
         <Search
           style={[display.marginMediumBottom]}
@@ -45,7 +48,7 @@ export default class SearchPage extends Component {
             )}
           />
         </View>
-        <FloatingButton icon="plus" />
+        <FloatingButton action={() => navigate('NewEmployee')} icon="plus" />
       </View>
     )
   }

@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from 'react'
-import EmployeeDetails from './src/pages/EmployeeDetails'
+import Navigator from './routes'
 
 export default class App extends Component {
   constructor() {
@@ -12,6 +12,6 @@ export default class App extends Component {
   }
 
   render() {
-    return <EmployeeDetails />
+    return <Navigator />
   }
 }
