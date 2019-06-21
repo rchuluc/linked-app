@@ -20,11 +20,7 @@ export default class NewEmployee extends Component {
           favoriteControl={false}
           action={() => goBack()}
         />
-        <EmployeeForm
-          variant="atlternative"
-          editable={true}
-          variant="alternative"
-        />
+        <EmployeeForm editable={true} variant="alternative" />
       </View>
     )
   }

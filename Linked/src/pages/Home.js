@@ -3,6 +3,7 @@ import { Text, View, Image } from 'react-native'
 import { text, display } from '../../styles'
 import Logo from '../assets/logo.png'
 import ActionCard from '../molecules/ActionCard'
+import { SearchById } from '../utils/Api'
 
 /**
 Home
@@ -12,6 +13,18 @@ Home
 export default class Home extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      username: ''
+    }
+  }
+
+  _getUserData = async () => {
+    const user = await SearchById(this.props.navigation.state.params.userId)
+    this.setState({ username: user.name })
+  }
+
+  componentWillMount = () => {
+    this._getUserData()
   }
 
   render() {
@@ -28,7 +41,7 @@ export default class Home extends Component {
             display.marginMediumBottom
           ]}
         >
-          Hello {this.props.userName}
+          Hello {this.state.username}
         </Text>
         <Text style={text.h5}>How can I help?</Text>
         <View

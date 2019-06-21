@@ -4,6 +4,7 @@ import Card from '../atoms/Card'
 import Input from '../atoms/Input'
 import ActionButton from '../molecules/ActionButtons'
 import { display } from '../../styles'
+import { InsertNew } from '../utils/Api'
 
 export default class EmployeeForm extends Component {
   constructor(props) {
@@ -11,52 +12,91 @@ export default class EmployeeForm extends Component {
   }
 
   state = {
-    data: [
+    form: [
       {
         label: 'Name',
-        placeholder: 'complete name'
+        placeholder: 'complete name',
+        key: 'name',
+        value: ''
       },
       {
         label: 'CPF',
-        placeholder: 'only numbers'
+        placeholder: 'only numbers',
+        key: 'cpf',
+        value: ''
       },
       {
         label: 'Birthdate',
-        placeholder: 'DD/MM/YYYY'
+        placeholder: 'DD/MM/YYYY',
+        key: 'birthday',
+        value: ''
       },
       {
         label: 'Job',
-        placeholder: 'enter the role'
+        placeholder: 'enter the role',
+        key: 'job',
+        value: ''
       },
       {
         label: 'Email',
-        placeholder: 'example@domain.com'
+        placeholder: 'example@domain.com',
+        key: 'emailPrivate',
+        value: ''
       },
       {
         label: 'Phone',
-        placeholder: 'only numbers'
+        placeholder: 'only numbers',
+        key: 'phone',
+        value: ''
       },
       {
         label: 'Mobile',
-        placeholder: 'only numbers'
+        placeholder: 'only numbers',
+        key: 'mobilePhone',
+        value: ''
       },
       {
         label: 'Address',
-        placeholder: 'street'
+        placeholder: 'street',
+        key: 'address',
+        value: ''
       },
       {
         label: 'Number',
-        placeholder: 'number of house'
+        placeholder: 'number of house',
+        key: 'number',
+        value: ''
       },
       {
         label: 'Complement',
-        placeholder: 'apartment, block ...'
+        placeholder: 'apartment, block ...',
+        key: 'complement',
+        value: ''
+      },
+      {
+        label: 'City',
+        placeholder: 'city name',
+        key: 'city',
+        value: ''
       },
       {
         label: 'State',
-        placeholder: 'only code'
+        placeholder: 'only code',
+        key: 'state',
+        value: ''
       }
     ]
+  }
+
+  _addEmployee = () => {
+    const payload = this.state.form.reduce((prev, curr) => {
+      const obj = { [curr.key]: curr.val }
+      return { ...prev, ...obj }
+    })
+    const insert = InsertNew(JSON.stringify(payload))
+    if (!insert.error) {
+      alert(insert)
+    }
   }
 
   render() {
@@ -69,8 +109,9 @@ export default class EmployeeForm extends Component {
               display.col,
               display.center,
               display.marginSmallTop
-            ]}>
-            {this.state.data.map(item => (
+            ]}
+          >
+            {this.state.form.map(item => (
               <Input
                 key={item.label}
                 style={display.marginMediumBottom}
@@ -79,6 +120,9 @@ export default class EmployeeForm extends Component {
                 variant={
                   this.props.editable ? this.props.variant : 'transparent'
                 }
+                onChange={val => {
+                  this.setState({ [item.value]: val })
+                }}
                 editable={this.props.editable}
                 textValue={this.props.textValue}
               />
@@ -91,6 +135,7 @@ export default class EmployeeForm extends Component {
                 { flex: 1, position: 'relative' }
               ]}
               primaryTitle="create"
+              primaryAction={() => this._addEmployee()}
               variant={this.props.variant}
               secondaryTitle="cancel"
             />

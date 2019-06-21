@@ -9,6 +9,7 @@ Input
 @param {string} variant change input border color based in styles
 @param {string} textValue value when the field isn't editable
 @param {boolean} editable control if the field is editable or not
+@param {function} onChange function to pass value to parent
 */
 
 export default class Input extends Component {
@@ -18,8 +19,7 @@ export default class Input extends Component {
 
   state = {
     variant: {},
-    text: input.placeholder,
-    input: ''
+    text: input.placeholder
   }
 
   componentDidMount() {
@@ -48,7 +48,7 @@ export default class Input extends Component {
         <TextInput
           style={this.state.text}
           value={this.props.editable ? this.state.input : this.props.textValue}
-          onChangeText={val => this.setState({ input: val, text: input.value })}
+          onChangeText={this.props.onChange}
           placeholder={this.props.placeholder}
           editable={this.props.editable}
         />

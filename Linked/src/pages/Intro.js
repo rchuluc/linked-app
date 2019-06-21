@@ -3,7 +3,7 @@ import Carousel from '../molecules/Carousel'
 import ActionButton from '../molecules/ActionButtons'
 import { View } from 'react-native'
 import { display } from '../../styles'
-
+import AsyncStorage from '@react-native-community/async-storage'
 /**
  Intro
  */
@@ -15,12 +15,20 @@ export default class Intro extends Component {
 
   state = { step: 0 }
 
-  next() {
+  _next = () => {
     if (this.state.step < 2) {
       this.setState({
         step: this.state.step + 1
       })
     }
+  }
+
+  _storeData = async () => {
+    await AsyncStorage.setItem('newUser', 'false')
+  }
+
+  componentWillUnmount = () => {
+    this._storeData()
   }
 
   render() {
@@ -32,7 +40,7 @@ export default class Intro extends Component {
         <ActionButton
           style={{ position: 'absolute' }}
           primaryAction={
-            this.state.step === 2 ? () => navigate('Login') : () => this.next()
+            this.state.step === 2 ? () => navigate('Login') : () => this._next()
           }
           primaryTitle="next"
           variant="primary"

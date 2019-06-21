@@ -5,18 +5,23 @@ import FloatingButton from '../atoms/FloatingButton'
 import Header from '../molecules/Header'
 import Search from '../atoms/Search'
 import EmployerCard from '../organisms/EmployerCard'
+import { ShowAll } from '../utils/Api'
 
 export default class SearchPage extends Component {
   constructor() {
     super()
+    this.state = {
+      data: []
+    }
   }
 
-  state = {
-    data: [
-      { key: '1', variant: 'secondary', name: 'John', role: 'Developer' },
-      { key: '2', variant: 'primary', name: 'Mary', role: 'Tester' },
-      { key: '3', variant: 'alternative', name: 'Carol', role: 'Manager' }
-    ]
+  _getEmployees = async () => {
+    const employees = await ShowAll()
+    this.setState({ data: employees })
+  }
+
+  componentWillMount = () => {
+    this._getEmployees()
   }
 
   render() {
@@ -41,11 +46,12 @@ export default class SearchPage extends Component {
             renderItem={({ item }) => (
               <EmployerCard
                 style={display.marginMediumBottom}
-                variant={item.variant}
+                variant="secondary"
                 name={item.name}
-                role={item.role}
+                role={item.job}
               />
             )}
+            keyExtractor={item => item._id}
           />
         </View>
         <FloatingButton action={() => navigate('NewEmployee')} icon="plus" />

@@ -1,5 +1,10 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation'
+import {
+  createStackNavigator,
+  createAppContainer,
+  createSwitchNavigator
+} from 'react-navigation'
 
+import Loading from './src/pages/Loading'
 import Intro from './src/pages/Intro'
 import Login from './src/pages/Login'
 import Home from './src/pages/Home'
@@ -8,19 +13,16 @@ import NewEmployee from './src/pages/NewEmployee'
 import EmployeeDetails from './src/pages/EmployeeDetails'
 import Success from './src/pages/Success'
 
-const Navigator = createStackNavigator({
-  Intro: {
-    screen: Intro,
-    navigationOptions: {
-      header: null
-    }
-  },
+const AuthStack = createStackNavigator({
   Login: {
     screen: Login,
     navigationOptions: {
       header: null
     }
-  },
+  }
+})
+
+const AppStack = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
@@ -53,4 +55,21 @@ const Navigator = createStackNavigator({
   }
 })
 
-export default createAppContainer(Navigator)
+export default createAppContainer(
+  createSwitchNavigator({
+    Loading: {
+      screen: Loading,
+      navigationOptions: {
+        header: null
+      }
+    },
+    Intro: {
+      screen: Intro,
+      navigationOptions: {
+        header: null
+      }
+    },
+    Auth: AuthStack,
+    App: AppStack
+  })
+)
